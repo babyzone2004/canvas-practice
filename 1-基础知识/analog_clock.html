@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  body{
+    background: #dddddd;
+  }
+  .container{
+    zoom:0.5;
+  }
+  #canvas{
+    margin: 10px;
+    padding: 10px;
+    background: #ffffff;
+    border: thin inset #aaaaaa;
+  }
+</style>
+<body>
+<div class="container">
+  <canvas id="canvas" width="1200" height="600" style="border:1px solid gery;">
+  Your browser does not support the HTML5 canvas tag.
+  </canvas>
+</div>
+  <script>
+    var canvas=document.querySelector("#canvas");
+    var ctx=canvas.getContext('2d');
+    ctx.scale(2,2);
+
+    var FONT_HEIGHT=15;
+    var MARGIN=35;
+    var HAND_TRAUNCATION=canvas.width/25;
+    var HOUR_HAND_TRUNCATION=canvas.width/10;
+    var NUMERAL_SPACING=20;
+    var RADIUS = canvas.height/4-MARGIN;
+    var HAND_RADIUS=RADIUS+NUMERAL_SPACING;
+
+    function drawCircle(){
+      ctx.beginPath();
+      ctx.arc(canvas.width/4,canvas.height/4,RADIUS,0,Math.PI*2,true);
+      ctx.stroke();
+    }
+    drawCircle();
+    canvas.addEventListener('click',function(){
+      //alert("222");
+    })
+
+    var bboxTmp=canvas.getBoundingClientRect();
+    console.log(bboxTmp);
+    var rectCollection = canvas.getClientRects();
+    console.log(rectCollection);
+
+    console.log(canvas.clientTop);
+    
+    function windowToCanvas(canvas,x,y){
+      //getBoundingClientRect()方法返回元素的大小及其相对于视口的位置。
+      var bbox=canvas.getBoundingClientRect();
+      var bboxW=bbox.width;
+      var bboxH=bbox.height;
+      var canvasW=canvas.width;
+      var canvasH=canvas.height;
+
+      return {
+        x:x-bbox.left*(canvasW/bboxW),
+        y:y-bbox.top*(canvasH/bboxH)
+      }
+
+    }
+
+  </script>
+</body>
+</html>

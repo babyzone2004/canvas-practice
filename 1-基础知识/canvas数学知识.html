@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  body{
+    background: #dddddd;
+  }
+  .container{
+    zoom:0.5;
+  }
+  #canvas{
+    margin: 10px;
+    padding: 10px;
+    background: #ffffff;
+    border: thin inset #aaaaaa;
+  }
+</style>
+<body>
+  <div class="container">
+    <canvas id="canvas" width="1200" height="600" style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.
+    </canvas>
+  </div>
+  <script>
+    var canvas=document.querySelector("#canvas");
+    var ctx=canvas.getContext('2d');
+
+    /**
+    canvas 中所有与角度(angle,degree) 有关的API,都需要以弧度(radian)的方式进行指定。
+    JS中Math.sin(),Math.cos(),Math.tan()函数都采用弧度值。
+  
+    公式1: 180度 = π弧度
+
+    公式2：1弧度 = 180/π 度
+
+    公式3：1度 = π/180 弧度
+
+    公式4：正弦sin = 对边/斜边
+
+    公式5：余弦cos = 邻边/斜边
+
+    公式6: 正切tan = 对边/邻边
+
+
+
+    **/
+
+  </script>
+</body>
+</html>

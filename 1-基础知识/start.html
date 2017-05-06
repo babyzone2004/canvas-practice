@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <title>Document</title>
+</head>
+<style>
+  body{
+    background: #dddddd;
+  }
+  #canvas{
+    margin: 10px;
+    padding: 10px;
+    background: #ffffff;
+    border: thin inset #aaaaaa;
+  }
+</style>
+<body>
+  <canvas id="canvas" width="600" height="300">
+    canvas not support
+  </canvas>
+  <script src="../hidpi-canvas-polyfill-master/dist/hidpi-canvas.min.js"></script>
+  <script>
+  var getPixelRatio = function(context) {
+        var backingStore = context.backingStorePixelRatio ||
+              context.webkitBackingStorePixelRatio ||
+              context.mozBackingStorePixelRatio ||
+              context.msBackingStorePixelRatio ||
+              context.oBackingStorePixelRatio ||
+              context.backingStorePixelRatio || 1;
+
+        return (window.devicePixelRatio || 1) / backingStore;
+    };
+  
+   //调用
+    
+    var canvas=document.querySelector("#canvas");
+ 
+    var ctx=canvas.getContext('2d');
+    var ratio = getPixelRatio(ctx);
+    console.log(ratio);
+    console.log(canvas.width/2); 
+
+    ctx.font="38pt Arial";
+    ctx.fillStyle="grey";
+    ctx.strokeStyle="blue";
+    ctx.fillText("HELLO CANVAS",canvas.width/4-150,canvas.height/4+15);
+    ctx.strokeText("HELLO CANVAS",canvas.width/4-150,canvas.height/4+15);
+
+  </script>
+</body>
+</html>
