@@ -31,22 +31,34 @@
     var ctx=canvas.getContext('2d');
     ctx.scale(2,2);
 
-    ctx.lineWidth=30;
+    /** strokeStyle，fillStyle ******************
+   
+
+    *  默认是使用不透明的黑色进行充填和描边，可以使用strokeStyle，fillStyle进行自定义
+    *  初始使用 rgba等指定透明度外，也可以使用globalAlphas属性指定
+
+    *  除了可以为strokeStyle，fillStyle 指定颜色值为，还可以指定渐变色或图案
+    *  canvas 的渐变分为：线性渐变(linear) 和 放射渐变(radial)
+    */
+
+    ctx.lineJoin="round";
+    ctx.lineWidth=10;
     ctx.font="24px Arial"
 
-    //ctx.strokeRect(75,100,200,200);
-
-    ctx.lineWidth = 30;
-
     ctx.font = '24px Helvetica';
-    ctx.fillText('Click anywhere to erase', 175, 40);
+    ctx.fillText('Click anywhere to erase', 175, 140);
 
-    ctx.strokeRect(75, 100, 200, 200);
-    ctx.fillRect(325, 100, 200, 200);
+    ctx.strokeStyle="green";
+    ctx.fillStyle = "rgba(0,0,0,0.6)";
+
+    ctx.strokeRect(75, 80, 200, 200);
+    ctx.fillRect(325, 80, 200, 200);
 
     ctx.canvas.onmousedown = function (e) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
+
+    
 
   </script>
 </body>

@@ -29,12 +29,51 @@
   <script>
     var canvas=document.querySelector("#canvas");
     var ctx=canvas.getContext('2d');
+    ctx.scale(2,2);
 
     /** 矩形绘制的核心方法 ******************
     1. clearRect(double x,double y, double w,double h):  矩形清除
     2. strokeRect(double x,double y, double w,double h): 矩形描边
     3. fillRect(double x,double y, double w,double h):   矩形充填
+
+    *  默认是使用不透明的黑色进行充填和描边，可以使用strokeStyle，fillStyle进行自定义
+    *  初始使用 rgba等指定透明度外，也可以使用globalAlphas属性指定
     */
+
+    ctx.lineJoin="round";
+    ctx.lineWidth=10;
+    ctx.font="24px Arial"
+
+    ctx.font = '24px Helvetica';
+    ctx.fillText('Click anywhere to erase', 175, 140);
+
+    ctx.strokeStyle="green";
+ 
+    //创建线性渐变线
+    gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+
+    gradient.addColorStop(0, 'blue');
+    gradient.addColorStop(0.25, 'white');
+    gradient.addColorStop(0.5, 'blue');
+    gradient.addColorStop(0.75, 'red');
+    gradient.addColorStop(1, 'yellow');
+
+    //ctx.fillStyle = "rgba(0,0,0,0.6)";
+    ctx.fillStyle=gradient;
+    
+
+    // 创建放射渐变的两个渐变圆
+    // ctx.createRadialGradient(x1, y1, r1, x2, y2, r2);
+    
+
+    ctx.strokeRect(75, 80, 200, 200);
+    ctx.fillRect(325, 80, 200, 200);
+
+    ctx.canvas.onmousedown = function (e) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    };
+
+    
 
   </script>
 </body>
